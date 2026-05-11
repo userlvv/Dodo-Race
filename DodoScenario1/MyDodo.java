@@ -130,4 +130,15 @@ public class MyDodo extends Dodo
             return true;
             }
     }  
+    
+    public void layEggIfPossible() {
+        if ( canLayEgg() ) {
+            layEgg();
+        }
+    }
+
+    public void turn180() {
+        turnRight();
+        turnRight();
+    }
 }
