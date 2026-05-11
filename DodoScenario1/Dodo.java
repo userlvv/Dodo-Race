@@ -185,7 +185,7 @@ public abstract class Dodo extends Actor
             return getX() == 0;
         }
     }
-
+    
     public boolean facingNorth () {
         return getDirection() == NORTH;
     }
