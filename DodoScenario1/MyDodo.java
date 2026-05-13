@@ -146,7 +146,6 @@ public class MyDodo extends Dodo
         while( ! borderAhead() ){
             getY();
             getX();
-            System.out.println("Coordinates: " + "X-axis: " + getX() + ", Y-axis: " + getY());
             move();
         }
     }
@@ -180,5 +179,12 @@ public class MyDodo extends Dodo
     public void turn180() {
         turnRight();
         turnRight();
+    }
+    
+    public void goToEgg() {
+        while (!onEgg() ) {
+            move();
+        }
+        System.out.println("Found an egg");
     }
 }
