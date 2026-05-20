@@ -142,10 +142,8 @@ public class MyDodo extends Dodo
      *              Coordinates of each cell printed in the console.
      */
 
-    public void walkToWorldEdgePrintingCoordinates( ){
+    public void walkToWorldEdge( ){
         while( ! borderAhead() ){
-            getY();
-            getX();
             move();
         }
     }
@@ -187,4 +185,27 @@ public class MyDodo extends Dodo
         }
         System.out.println("Found an egg");
     }
+    
+    public void goBackToStartOfRowAndFaceBack() {
+        turnRight();
+        turnRight();
+        while( ! borderAhead() ){
+            move();
+        }
+        turnRight();
+        turnRight();
+    }
+    
+    public void walkToWorldEdgeClimbingOverFences() {
+        while ( ! borderAhead() ) {
+        if (fenceAhead() ) {
+            climbOverFence();
+        } else {
+            move();
+        }
+        }
+    }
+    
+    
+    
 }
