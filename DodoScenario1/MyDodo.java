@@ -159,7 +159,7 @@ public class MyDodo extends Dodo
      *                 false if Dodo can't lay an egg
      *                      (already an egg in the cell)
      */
-
+    
     public boolean canLayEgg( ){
       if( onEgg() ){
             return false;
@@ -168,17 +168,26 @@ public class MyDodo extends Dodo
             }
     }  
     
+    /*
+     * Checks if its possible to lay an egg, if yes it'll lay an egg
+     */
     public void layEggIfPossible() {
         if ( canLayEgg() ) {
             layEgg();
         }
     }
-
+    
+    /*
+     * Turns 180 degrees
+     */
     public void turn180() {
         turnRight();
         turnRight();
     }
     
+    /*
+     * Checks if its on an egg and tells you
+     */
     public void goToEgg() {
         while (!onEgg() ) {
             move();
@@ -186,6 +195,9 @@ public class MyDodo extends Dodo
         System.out.println("Found an egg");
     }
     
+    /*
+     * Walks to the start of the world and faces to the end of the world
+     */
     public void goBackToStartOfRowAndFaceBack() {
         turnRight();
         turnRight();
@@ -196,6 +208,9 @@ public class MyDodo extends Dodo
         turnRight();
     }
     
+    /*
+     * Walks to end of world but climbs over fences if there are any
+     */
     public void walkToWorldEdgeClimbingOverFences() {
         while ( ! borderAhead() ) {
         if (fenceAhead() ) {
@@ -206,6 +221,9 @@ public class MyDodo extends Dodo
         }
     }
     
+    /* Picks up grain if there is grain and prints its coordinates
+     * 
+     */
     public void pickUpGrainsAndPrintCoordinates() {
             while ( ! borderAhead() ) {
             if ( onGrain() ) {
@@ -216,5 +234,16 @@ public class MyDodo extends Dodo
         if ( onGrain() ) {
                 System.out.println("X = " + getX() + ", Y = " + getY());
             }
+    }
+    
+    /*
+     * Lets Mimi take one step backwards
+     */
+    public void stepOneCellBackwards() {
+        turnRight();
+        turnRight();
+        move();
+        turnLeft();
+        turnLeft();
     }
 }
