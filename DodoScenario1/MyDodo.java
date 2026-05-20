@@ -142,7 +142,7 @@ public class MyDodo extends Dodo
      *              Coordinates of each cell printed in the console.
      */
 
-    public void walkToWorldEdge( ){
+    public void walkToWorldEdge(){
         while( ! borderAhead() ){
             move();
         }
@@ -206,6 +206,15 @@ public class MyDodo extends Dodo
         }
     }
     
-    
-    
+    public void pickUpGrainsAndPrintCoordinates() {
+            while ( ! borderAhead() ) {
+            if ( onGrain() ) {
+                System.out.println("X = " + getX() + ", Y = " + getY());
+            }
+            move();
+        }
+        if ( onGrain() ) {
+                System.out.println("X = " + getX() + ", Y = " + getY());
+            }
+    }
 }
