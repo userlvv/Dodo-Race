@@ -246,4 +246,19 @@ public class MyDodo extends Dodo
         turnLeft();
         turnLeft();
     }
+    
+    /*
+     * Lays egg in nest if there isnt a egg in that nest
+     */
+    public void worldEmptyNestsTopRow() {
+        while ( ! borderAhead() ) {
+            if ( onNest() && !onEgg() ) {
+                layEgg();
+            }
+            move();
+        }
+        if ( onNest() && !onEgg() ) {
+            layEgg();
+        }
+    }
 }
