@@ -252,13 +252,38 @@ public class MyDodo extends Dodo
      */
     public void worldEmptyNestsTopRow() {
         while ( ! borderAhead() ) {
-            if ( onNest() && !onEgg() ) {
+            if ( onNest() && ! onEgg() ) {
                 layEgg();
             }
             move();
         }
-        if ( onNest() && !onEgg() ) {
+        if ( onNest() && ! onEgg() ) {
             layEgg();
         }
     }
+    
+    public void walkToNestClimbingOverFence() {
+        while ( ! onNest() ) {
+            if ( fenceAhead() ) {
+                climbOverFence();
+            } else {
+                move();
+            }
+        }
+        if ( onNest() ) {
+        layEgg();
+        }
+    }
+    /*
+     * Walks around a squared fenced area
+     */
+    public void walkAroundFencedArea() {
+        while ( ! onEgg() ) {       
+        turnRight();
+        if ( fenceAhead() ) {
+            turnLeft();
+        }
+        move();
+    }
+}
 }
