@@ -275,15 +275,15 @@ public class MyDodo extends Dodo
         }
     }
     /*
-     * Walks around a squared fenced area
+     * Walks around a non-squared fenced area
      */
     public void walkAroundFencedArea() {
         while ( ! onEgg() ) {       
-        turnRight();
-        if ( fenceAhead() ) {
-            turnLeft();
+            turnRight();
+            while ( fenceAhead() ) {
+                turnLeft();
+            }
+            move();
         }
-        move();
     }
-}
 }
