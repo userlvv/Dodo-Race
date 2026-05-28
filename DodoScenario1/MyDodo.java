@@ -327,4 +327,16 @@ public class MyDodo extends Dodo
             }
         }
     }
+    
+    /*
+     * variabele bla, ff wachten
+     */
+    /*
+     * Faces east if not facing east
+     */
+    public void faceEast() {
+        while (getDirection() != EAST) {
+            turnRight();
+        }
+    }
 }
