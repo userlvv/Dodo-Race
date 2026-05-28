@@ -286,4 +286,27 @@ public class MyDodo extends Dodo
             move();
         }
     }
+    /*
+     * Walks over eggs to go to nest
+     */
+    public void eggToNestTrails() {
+        move();
+        while (! onNest() ) {
+            if (! nestAhead() ) {
+                if ( eggAhead() ) {
+                   move(); 
+                } else {
+                    turnRight();
+                    if ( eggAhead() ) {
+                       move();
+                    } else {
+                        turnLeft();
+                        turnLeft();
+                    }
+                }
+            } else {
+                move();
+            }
+        }
+    }
 }
