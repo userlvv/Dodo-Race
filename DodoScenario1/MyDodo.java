@@ -309,4 +309,22 @@ public class MyDodo extends Dodo
             }
         }
     }
+    /*
+     * Finds its way thru maze
+     */
+    public void findWayThruMaze() {
+        while (! onNest() ) {
+            turnRight();
+            if (canMove() ) {
+                move();
+            } else {
+                turnLeft();
+                if (canMove() ) {
+                move();
+                } else {
+                    turnLeft(); 
+                }
+            }
+        }
+    }
 }
