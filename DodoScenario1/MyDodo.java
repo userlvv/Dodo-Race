@@ -339,4 +339,25 @@ public class MyDodo extends Dodo
             turnRight();
         }
     }
+    
+    public void goToLocation() {
+        
+    }
+    /*
+     * Counts eggs in one row
+     */
+    public int countEggsInRow() {
+        int totalEggs = 0;
+        while (!borderAhead()) {
+            if (onEgg()) {
+                totalEggs++;
+            }
+            move();
+        }
+        if (onEgg()) {
+            totalEggs++;
+        }
+        goBackToStartOfRowAndFaceBack();
+        return totalEggs;
+    }
 }
