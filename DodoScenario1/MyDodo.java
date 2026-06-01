@@ -347,41 +347,54 @@ public class MyDodo extends Dodo
         }
     }
     
+    /*
+     * checks if coords are valid
+     */
+    public boolean validCoordinates(int x, int y) {
+        int worldBorder = getWorld().getWidth();
+        if (x < worldBorder || y < worldBorder) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     
-
     /*
      * moves to given coords
      */
-        public void goToLocation(int x, int y) {
-        int xAxis = x - getX();
-        int yAxis = y - getY();
-        System.out.println("X: " + xAxis);
-        System.out.println("Y: " + yAxis);
-        if (xAxis < 0) {
-            faceDirection(WEST);
-            for (int i = xAxis; i < 0; i++) {
-            move();
-        }
-        } else {
-            faceDirection(EAST);
-            for (int i = 0; i < xAxis; i++) {
-            move();
+    public void goToLocation(int x, int y) {
+        if (validCoordinates(x,y) == true) {
+            int xAxis = x - getX();
+            int yAxis = y - getY();
+            System.out.println("X: " + xAxis);
+            System.out.println("Y: " + yAxis);
+            if (xAxis < 0) {
+                faceDirection(WEST);
+                for (int i = xAxis; i < 0; i++) {
+                move();
             }
-        }
+            } else {
+                faceDirection(EAST);
+                for (int i = 0; i < xAxis; i++) {
+                move();
+                }
+            }
         
-        if (yAxis < 0) {
-            faceDirection(NORTH);
-            for (int i = yAxis; i < 0; i++) {
-            move();
+            if (yAxis < 0) {
+                faceDirection(NORTH);
+                for (int i = yAxis; i < 0; i++) {
+                move();
+                }
+            } else {
+                faceDirection(SOUTH);
+                for (int i = 0; i < yAxis; i++) {
+                move();
+                }
             }
-        } else {
-            faceDirection(SOUTH);
-            for (int i = 0; i < yAxis; i++) {
-            move();
-            }
+        } else if (validCoordinates(x,y) == false) {
+            System.out.println("Invalid Coordinates");
         }
     }
-
     
     /*
      * Counts eggs in one row
