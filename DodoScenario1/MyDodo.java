@@ -423,4 +423,28 @@ public class MyDodo extends Dodo
         goBackToStartOfRowAndFaceBack();
         return totalEggs;
     }
+    
+    public int countEggsInWorld() {
+        int worldBorder = getWorld().getWidth();
+        int totalEggs = 0;
+        if (getX() != 0 || getY() != 0) {
+            goToLocation(0,0);
+        }
+        for (int i = 0; i < worldBorder; i++) {
+            while (!borderAhead()) {
+                if (onEgg()) {
+                    totalEggs++;
+                }
+                move();
+            }
+            if (onEgg()) {
+                totalEggs++;
+            }
+            goBackToStartOfRowAndFaceBack();
+            turnRight();
+            move();
+            turnLeft();
+        }
+        return totalEggs;
+    }
 }
