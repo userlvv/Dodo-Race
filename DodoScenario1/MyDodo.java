@@ -331,6 +331,7 @@ public class MyDodo extends Dodo
     /*
      * variabele bla, ff wachten
      */
+    
     /*
      * Faces east if not facing east
      */
@@ -340,9 +341,48 @@ public class MyDodo extends Dodo
         }
     }
     
-    public void goToLocation() {
-        
+    public void faceDirection(int direction) {
+        while (getDirection() != direction) {
+            turnRight();
+        }
     }
+    
+    
+
+    /*
+     * moves to given coords
+     */
+        public void goToLocation(int x, int y) {
+        int xAxis = x - getX();
+        int yAxis = y - getY();
+        System.out.println("X: " + xAxis);
+        System.out.println("Y: " + yAxis);
+        if (xAxis < 0) {
+            faceDirection(WEST);
+            for (int i = xAxis; i < 0; i++) {
+            move();
+        }
+        } else {
+            faceDirection(EAST);
+            for (int i = 0; i < xAxis; i++) {
+            move();
+            }
+        }
+        
+        if (yAxis < 0) {
+            faceDirection(NORTH);
+            for (int i = yAxis; i < 0; i++) {
+            move();
+            }
+        } else {
+            faceDirection(SOUTH);
+            for (int i = 0; i < yAxis; i++) {
+            move();
+            }
+        }
+    }
+
+    
     /*
      * Counts eggs in one row
      */
