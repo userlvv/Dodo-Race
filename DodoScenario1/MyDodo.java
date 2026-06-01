@@ -397,6 +397,16 @@ public class MyDodo extends Dodo
     }
     
     /*
+     * lays trail of eggs
+     */
+    public void layTrailOfEggs(int n) {
+        for (int i = 0; i < n; i++) {
+            layEgg();
+            move();
+        }
+    }
+    
+    /*
      * Counts eggs in one row
      */
     public int countEggsInRow() {
