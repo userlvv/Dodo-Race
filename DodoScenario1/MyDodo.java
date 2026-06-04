@@ -447,4 +447,37 @@ public class MyDodo extends Dodo
         }
         return totalEggs;
     }
+    
+    public int mostEggsInRow() {
+        int worldBorder = getWorld().getWidth();
+        int maxEggsRow = 0;
+        int bestRow = 0;
+        if (getX() !=0 || getY() != 0) {
+            goToLocation(0,0);
+            faceEast();
+        }
+        for (int row = 0; row < worldBorder; row++) {
+            int eggsInRow =0;
+            while (!borderAhead()) {
+                if (onEgg()) {
+                    eggsInRow++;
+                }
+                move();
+            }
+            if (onEgg()) {
+                eggsInRow++;
+            }
+            if (eggsInRow > maxEggsRow) {
+                maxEggsRow = eggsInRow;
+                bestRow = row;
+            }
+            goBackToStartOfRowAndFaceBack();
+            turnRight();
+            move();
+            turnLeft();
+        }
+        System.out.println("Best Row = number " + bestRow);
+        return bestRow;
+    }
+    
 }
