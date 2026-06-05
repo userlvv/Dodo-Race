@@ -432,6 +432,7 @@ public class MyDodo extends Dodo
         int totalEggs = 0;
         if (getX() != 0 || getY() != 0) {
             goToLocation(0,0);
+            faceEast();
         }
         for (int i = 0; i < worldBorder; i++) {
             while (!borderAhead()) {
@@ -558,6 +559,15 @@ public class MyDodo extends Dodo
         }
         goToLocation(0, 0);
         faceEast();
+    }
+    /*
+     * Gives average per row
+     */
+    public double averageEggRow () {
+        int worldHeight = getWorld().getHeight();
+        int totalEggs = countEggsInWorld();
+        double average = (double) totalEggs / worldHeight;
+        return average;
     }
 }
     
