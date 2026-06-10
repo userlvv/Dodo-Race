@@ -563,12 +563,55 @@ public class MyDodo extends Dodo
     /*
      * Gives average per row
      */
-    public double averageEggRow () {
+    public double averageEggRow() {
         int worldHeight = getWorld().getHeight();
         int totalEggs = countEggsInWorld();
         double average = (double) totalEggs / worldHeight;
         return average;
     }
+    
+    public void parityBit() {
+        int worldWidth = getWorld().getWidth();
+        int worldHeight = getWorld().getHeight();
+        
+        for (int row = 0; row < worldHeight; row++) {
+            goToLocation(0, row);
+            faceEast();
+            int eggCount = 0;
+            while (!borderAhead()) {
+                if (onEgg()) {
+                    eggCount++;
+                }
+                move();
+            }
+            if (onEgg()) {
+                eggCount++;
+            }
+            if (eggCount % 2 != 0 ) {
+                layEggIfPossible();
+            }
+        }
+        for (int col = 0; col < worldWidth; col++) {
+            goToLocation(col, 0);
+            faceDirection(SOUTH);
+            int eggCount = 0;
+            while (!borderAhead()) {
+                if (onEgg()) {
+                    eggCount++;
+                }
+                move();
+            }
+            if (onEgg()) {
+                eggCount++;
+            }
+            if (eggCount % 2 != 0 ) {
+                layEggIfPossible();
+            }
+        }
+        goToLocation(0,0);
+        faceEast();
+    }
 }
+    
     
 
