@@ -99,12 +99,28 @@ public class MyDodo extends Dodo
         return SurpriseEgg.generateListOfSurpriseEggs(10, getWorld());
     }
 
-    
+    public void printCoordinatesOfEgg(Egg egg) {         
+        System.out.println("X: " + egg.getX() + ", Y: " + egg.getY());     
+    }
     
     public List<SurpriseEgg> makeListOfSurpriseEggAndPrintCoordinates() {
         List<SurpriseEgg> listOfEggs = makeListOfSurpriseEgg();
         for (SurpriseEgg egg : listOfEggs) {
             printCoordinatesOfEgg(egg);
+        }
+        return listOfEggs;
+    }
+    
+    public List<SurpriseEgg> makeListOfSurpriseEggAndFindMostValued() {
+        List<SurpriseEgg> listOfEggs = makeListOfSurpriseEgg();
+        int highestValue = 0;
+        
+        for (SurpriseEgg egg : listOfEggs) {
+            if (egg.getValue() > highestValue) {
+                highestValue = egg.getValue();
+                printCoordinatesOfEgg(egg);
+                System.out.println("Valued: " + highestValue);
+            }
         }
         return listOfEggs;
     }
