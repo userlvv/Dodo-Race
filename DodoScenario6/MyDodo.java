@@ -92,11 +92,20 @@ public class MyDodo extends Dodo
     }
 
     public void practiceWithListsOfSurpriseEggs( ){
-        List<SurpriseEgg>  listOfEgss = SurpriseEgg.generateListOfSurpriseEggs( 12, getWorld() );
+        List<SurpriseEgg>  listOfEggs = SurpriseEgg.generateListOfSurpriseEggs( 12, getWorld() );
     }
     
     public List<SurpriseEgg> makeListOfSurpriseEgg() {
         return SurpriseEgg.generateListOfSurpriseEggs(10, getWorld());
     }
 
+    
+    
+    public List<SurpriseEgg> makeListOfSurpriseEggAndPrintCoordinates() {
+        List<SurpriseEgg> listOfEggs = makeListOfSurpriseEgg();
+        for (SurpriseEgg egg : listOfEggs) {
+            printCoordinatesOfEgg(egg);
+        }
+        return listOfEggs;
+    }
 }
