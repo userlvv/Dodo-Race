@@ -124,4 +124,14 @@ public class MyDodo extends Dodo
         }
         return listOfEggs;
     }
+    
+    public void printAverageValueOfEggs() {
+        List<SurpriseEgg> listOfEggs = makeListOfSurpriseEgg();
+        double total = 0;
+        for (SurpriseEgg egg : listOfEggs) {
+            total += egg.getValue();
+        }
+        double avg = total / listOfEggs.size();
+        System.out.println("Average: " + avg);
+    }
 }
