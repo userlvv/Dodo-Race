@@ -134,4 +134,16 @@ public class MyDodo extends Dodo
         double avg = total / listOfEggs.size();
         System.out.println("Average: " + avg);
     }
+    
+    public void moveRandomly() {
+        int myNrOfStepsTaken = 0;
+        
+        while (myNrOfStepsTaken < Mauritius.MAXSTEPS) {
+            setDirection(randomDirection());
+            if (!borderAhead() && !fenceAhead()) {
+                step();
+                myNrOfStepsTaken++;
+            }
+        }
+    }
 }
