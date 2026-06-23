@@ -10,7 +10,8 @@ import java.util.ArrayList;
  */
 public class MyDodo extends Dodo
 {
-
+    private int score1 = 0;
+    private int score2 = 0;
     public MyDodo() {
         super( EAST );
     }
@@ -143,7 +144,14 @@ public class MyDodo extends Dodo
             if (!borderAhead() && !fenceAhead()) {
                 step();
                 myNrOfStepsTaken++;
+                
+                getScore(score1 + 1, score2); 
             }
         }
+    }
+    
+    public void getScore(int score1, int score2) {
+        this.score1 = score1;
+        this.score2 = score2;        
     }
 }
