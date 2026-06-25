@@ -150,8 +150,80 @@ public class MyDodo extends Dodo
         }
     }
     
+
     public void getScore(int score1, int score2) {
         this.score1 = score1;
         this.score2 = score2;        
+    }
+    
+        public boolean validCoordinates(int x, int y) {
+        int worldBorder = getWorld().getWidth();
+        if (x < worldBorder || y < worldBorder) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+        public void faceDirection(int direction) {
+        while (getDirection() != direction) {
+            turnRight();
+        }
+    }
+    
+    public void goToLocation(int x, int y) {
+        if (validCoordinates(x,y) == true) {
+            int xAxis = x - getX();
+            int yAxis = y - getY();
+            System.out.println("X: " + xAxis);
+            System.out.println("Y: " + yAxis);
+            if (xAxis < 0) {
+                faceDirection(WEST);
+                for (int i = xAxis; i < 0; i++) {
+                move();
+            }
+            } else {
+                faceDirection(EAST);
+                for (int i = 0; i < xAxis; i++) {
+                move();
+                }
+            }
+        
+            if (yAxis < 0) {
+                faceDirection(NORTH);
+                for (int i = yAxis; i < 0; i++) {
+                move();
+                }
+            } else {
+                faceDirection(SOUTH);
+                for (int i = 0; i < yAxis; i++) {
+                move();
+                }
+            }
+        } else if (validCoordinates(x,y) == false) {
+            System.out.println("Invalid Coordinates");
+        }
+    }
+    
+    public void goToClosestEgg() {
+        List<Egg> eggs = getListOfEggsInWorld();
+        if (eggs.isEmpty()) {
+            return;
+        }
+        Egg closest = eggs.get(0);
+        int shortestDist = 1000;
+        
+        for (Egg e : eggs) {
+            int distX = e.getX() - getX();
+            int distY = e.getY() - getY();
+            int totalDist = distX * distX + distY * distY;
+            
+            if (totalDist < shortestDist) {
+                shortestDist = totalDist;
+                closest = e;
+            }
+        }
+        goToLocation(closest.getX(), closest.getY());
+        pickUpEgg();
     }
 }
