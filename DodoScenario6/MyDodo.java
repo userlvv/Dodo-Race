@@ -226,4 +226,53 @@ public class MyDodo extends Dodo
         goToLocation(closest.getX(), closest.getY());
         pickUpEgg();
     }
+    
+    public void dodoRace() {
+        int steps = 0;
+        int score = 0;
+        
+        while (steps < 40) {
+            List<Egg> eggs = getListOfEggsInWorld();
+            if (eggs.isEmpty()) {
+                break;
+            }
+            
+            Egg bestEgg = eggs.get(0);
+            int bestScore = -1;
+            
+            for (Egg e : eggs) {
+                int distX = e.getX() - getX();
+                int distY = e.getY() - getY();
+                int totalDist = Math.abs(distX) + Math.abs(distY);
+                
+                if (totalDist == 0) {
+                  continue;  
+                }
+                int valueScore = e.getValue() / totalDist;
+                
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestEgg = e;
+                }
+            }
+            int oldX = getX();
+            int oldY = getY();
+        
+            goToLocation(bestEgg.getX(), bestEgg.getY());
+            pickUpEgg();
+            
+            score += bestEgg.getValue();
+            
+            int moved = Math.abs(getX() - oldX) + Math.abs(getY() - oldY);
+            System.out.println(moved);
+            
+            steps += moved;
+            if (steps >= 40) {
+                System.out.println("40 steps reached.");
+                break;
+            }
+        }
+        System.out.println("Score: " + score);
+        System.out.println("Steps: " + steps);
+    }
 }
